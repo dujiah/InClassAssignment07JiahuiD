@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         displayText = findViewById(R.id.display_text);
-        display = displayText.getText().toString();
 
         Intent aIntent = getIntent();
         Animal animals = (Animal) aIntent.getSerializableExtra(Keys.ANIMAL);
@@ -42,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RequestCodes.ADD_ANIMAL && resultCode == RESULT_OK) {
             Animal animals = (Animal) data.getSerializableExtra(Keys.ANIMAL);
             //displayText.setText(animals.toString()) ;
-            displayText.append(display);
-            displayText.setText(animals.toString());
+            //displayText.append(display);
+            display = display + animals.toString() + "\n";
+            displayText.setText(display);
         }
     }
 }
